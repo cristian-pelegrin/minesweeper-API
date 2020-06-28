@@ -1,0 +1,35 @@
+{
+  "name": "minesweeper-api",
+  "version": "1.0.0",
+  "description": "API for the Minesweeper game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start-dev": "NODE_ENV=dev nodemon server.js | pino-pretty",
+    "lint-fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristian-pelegrin/minesweeper-API.git"
+  },
+  "author": "Cristian Pelegrin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristian-pelegrin/minesweeper-API/issues"
+  },
+  "homepage": "https://github.com/cristian-pelegrin/minesweeper-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^5.0.0",
+    "pino": "^6.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "pino-pretty": "^4.0.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
