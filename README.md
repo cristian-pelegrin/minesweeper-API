@@ -8,6 +8,9 @@ Develop the classic game of [Minesweeper](https://en.wikipedia.org/wiki/Mineswee
 * Run 
     * Production mode `npm run start`
     * Development mode `npm run start-dev`
+    
+## Swagger UI
+`http://localhost:3000/api-docs/`
 
 ## Useful developer commands
 * Run code linter: `npm run lint-fix`
