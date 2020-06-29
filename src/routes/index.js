@@ -1,6 +1,6 @@
 const swaggerUi = require('swagger-ui-express');
 const api = require('./api');
-const swaggerJsDoc = require('../config/swagger-jsdoc');
+const swaggerJsDoc = require('../config/swagger/swagger-jsdoc');
 
 module.exports = (app) => {
   app.use('/api', api);
