@@ -24,7 +24,11 @@ const options = {
       },
     ],
   },
-  apis: ['./src/routes/api/game.js'],
+  apis: [
+    './src/routes/api/db.js',
+    './src/models/game-model.js',
+    './src/config/swagger/swagger-error-schemas.js',
+  ],
 };
 
 module.exports = swaggerJsdoc(options);
