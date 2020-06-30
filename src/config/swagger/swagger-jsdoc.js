@@ -25,8 +25,10 @@ const options = {
     ],
   },
   apis: [
-    './src/routes/api/db.js',
+    './src/routes/api/game.js',
     './src/models/game-model.js',
+    './src/models/board-model.js',
+    './src/models/cell-model.js',
     './src/config/swagger/swagger-error-schemas.js',
   ],
 };
