@@ -98,6 +98,19 @@ router.get('/:id/', gameController.getGame);
  *    post:
  *      summary: "Create a new game"
  *      tags: [Game]
+ *      requestBody:
+ *        description: "Game level"
+ *        content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  level:
+ *                    required: false
+ *                    type: "integer"
+ *                    enum:
+ *                      - 1
+ *                      - 2
  *      responses:
  *        "200":
  *          description: "A new game"

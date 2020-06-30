@@ -11,7 +11,7 @@ const systemError = (err, req, res, next) => {
     stack: showErrorInfo ? err.stack : { },
     status: err.status || 500,
   };
-  res.status(err.status).json({ error });
+  res.status(error.status).json({ error });
   next();
 };
 
