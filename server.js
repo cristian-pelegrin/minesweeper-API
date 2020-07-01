@@ -16,17 +16,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// setup logger
-const logger = pino({ level: process.env.LOG_LEVEL || 'info' });
-const expressLogger = expressPino({ logger });
-app.use(expressLogger);
-
 // configure routes
 require('./src/routes/index')(app);
 
 // setup error parsers
 app.use(errorParser.notFound);
 app.use(errorParser.systemError);
+
+// setup logger
+const logger = pino({ level: process.env.LOG_LEVEL || 'info' });
+const expressLogger = expressPino({ logger });
+app.use(expressLogger);
 
 // start Server
 app.listen(PORT, () => console.log(`Server running on HTTP PORT: ${PORT}`));

@@ -35,6 +35,22 @@ class Cell {
     this.flagged = params.flagged || false;
     this.questionSignMarked = params.questionSignMarked || false;
   }
+
+  setHasMine(value) {
+    this.hasMine = value;
+  }
+
+  getHasMine() {
+    return this.hasMine;
+  }
+
+  setWarnings(value) {
+    this.warnings = value;
+  }
+
+  getWarnings() {
+    return this.warnings;
+  }
 }
 
 module.exports = Cell;

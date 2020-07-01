@@ -32,12 +32,19 @@
  *                $ref: "#/components/schemas/Cell"
  */
 
+const cellsCollectionHelper = require('../helpers/cells-collection-helper');
+const Cell = require('./cell-model');
+
 class Board {
   // TO-DO add method to uncover empty cells nearby to uncovered one
 
   constructor(params) {
     this.size = params.size;
-    this.cells = params.cells;
+    this.cells = this.buildCells();
+  }
+
+  buildCells() {
+    return cellsCollectionHelper.buildCells(Cell, this.size);
   }
 }
 

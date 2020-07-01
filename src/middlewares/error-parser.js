@@ -12,7 +12,7 @@ const systemError = (err, req, res, next) => {
     status: err.status || 500,
   };
   res.status(error.status).json({ error });
-  next();
+  next(error);
 };
 
 module.exports = { notFound, systemError };
