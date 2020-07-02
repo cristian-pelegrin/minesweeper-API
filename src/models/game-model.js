@@ -19,15 +19,37 @@
 
 const { generateUniqueId } = require('../helpers/model-helpers');
 
-// TO-DO add update function with possibility to edit games attributes,
+const gameStates = {
+  CREATED: 'created', STARTED: 'started', VICTORY: 'victory', GAME_OVER: 'game_over',
+};
+
 // TO-DO add start time attribute
 
 class Game {
   constructor(params) {
     this.id = params.id || generateUniqueId();
-    this.state = params.state;
+    this.state = params.state || gameStates.CREATED;
     this.level = params.level;
     this.board = params.board;
   }
+
+  modifyBoard(action, params) {
+    return this.board.modify(action, params);
+  }
+
+  getId() {
+    return this.id;
+  }
+
+  getState() {
+    return this.state;
+  }
+
+  setState(value) {
+    this.state = value;
+  }
 }
-module.exports = Game;
+module.exports = {
+  Game,
+  gameStates,
+};

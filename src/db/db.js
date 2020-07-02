@@ -9,10 +9,9 @@ function load(collectionName, id = null) {
 }
 
 function save(collectionName, obj) {
-  const id = Date.now().toString();
-  repository[collectionName].push({ id, ...obj });
+  repository[collectionName].push(obj);
 
-  return load(collectionName, id);
+  return load(collectionName, obj.getId());
 }
 
 function remove(collectionName, id) {
@@ -23,8 +22,15 @@ function remove(collectionName, id) {
   return true;
 }
 
+function update(collectionName, obj) {
+  remove(collectionName, obj.getId());
+
+  return save(collectionName, obj);
+}
+
 module.exports = {
   load,
   save,
   remove,
+  update,
 };

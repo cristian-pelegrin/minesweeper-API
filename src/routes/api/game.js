@@ -111,6 +111,7 @@ router.get('/:id/', gameController.getGame);
  *                    enum:
  *                      - 1
  *                      - 2
+ *                      - 3
  *      responses:
  *        "200":
  *          description: "A new game"
@@ -154,7 +155,7 @@ router.post('/', gameController.createGame);
  *                type: object
  *                properties:
  *                  id:
- *                    type: "boolean"
+ *                    type: "integer"
  *                    example: 123
  *      responses:
  *        "200":
@@ -188,7 +189,67 @@ router.post('/', gameController.createGame);
  */
 router.delete('/', gameController.deleteGame);
 
-// TO-DO add PUT method to uncover cell
+/**
+ * @swagger
+ * path:
+ *  /game/cell/reveal:
+ *    put:
+ *      summary: "Reveal a game cell"
+ *      tags: [Game]
+ *      requestBody:
+ *        description: "Body with information of game and cell position"
+ *        content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  id:
+ *                    description: "Game id"
+ *                    type: "integer"
+ *                    example: 123
+ *                  position:
+ *                    description: "cell position"
+ *                    type: object
+ *                    properties:
+ *                      row:
+ *                        description: "row position"
+ *                        type: "integer"
+ *                        example: 4
+ *                      column:
+ *                        description: "column position"
+ *                        type: "integer"
+ *                        example: 3
+ *      responses:
+ *        "200":
+ *          description: "Game deleted"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  success:
+ *                    type: "boolean"
+ *                    example: true
+ *        "400":
+ *          description: "Bad request"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_400'
+ *        "404":
+ *          description: "Not found"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_404'
+ *        "500":
+ *          description: "Not found"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_500'
+ */
+router.put('/cell/reveal', gameController.revealCell);
 // TO-DO add PUT method to edit game state, add/remove flags, add/remove question marks
 
 module.exports = router;
