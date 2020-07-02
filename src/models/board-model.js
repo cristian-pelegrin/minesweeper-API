@@ -53,14 +53,27 @@ class Board {
     switch (action) {
       case boardActions.REVEAL_CELL:
         return this.revealCell(params);
+      case boardActions.FLAG_CELL:
+      case boardActions.QUESTION_MARK_CELL:
+        return this.markCell(action, params);
       default:
     }
+
+    cellsCollectionHelper.printBoard(this.cells);
 
     return true;
   }
 
   revealCell(params) {
     const { result, cells } = cellsCollectionHelper.revealCell(params, this.cells, this.size);
+    cellsCollectionHelper.printBoard(cells);
+    this.cells = cells;
+
+    return result;
+  }
+
+  markCell(action, params) {
+    const { result, cells } = cellsCollectionHelper.markCell(action, params, boardActions, this.cells);
     cellsCollectionHelper.printBoard(cells);
     this.cells = cells;
 

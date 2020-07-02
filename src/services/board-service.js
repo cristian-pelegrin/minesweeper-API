@@ -10,5 +10,4 @@ function create(params) {
 
 module.exports = {
   create,
-  modify,
 };
