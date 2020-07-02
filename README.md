@@ -1,5 +1,8 @@
 # minesweeper-API 
 
+## Live demo URL
+[cpelegrin-minesweeper-api.herokuapp.com/api-docs](https://cpelegrin-minesweeper-api.herokuapp.com/api-docs/)
+
 ## The Game
 Develop the classic game of [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game))
 
