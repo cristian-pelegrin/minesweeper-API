@@ -51,6 +51,28 @@ class Cell {
   getWarnings() {
     return this.warnings;
   }
+
+  getHidden() {
+    return this.hidden;
+  }
+
+  reveal() {
+    this.hidden = false;
+    this.flagged = false;
+    this.questionSignMarked = false;
+
+    return { mine: this.hasMine, warnings: this.warnings };
+  }
+
+  getStringRepresentation() {
+    if (this.hidden) return ' ';
+    if (this.hasMine) return 'm';
+    if (this.warnings) return `${this.warnings}`;
+    if (this.flagged) return 'f';
+    if (this.questionSignMarked) return '?';
+
+    return '_';
+  }
 }
 
 module.exports = Cell;

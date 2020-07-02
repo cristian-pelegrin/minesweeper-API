@@ -1,5 +1,5 @@
 function generateUniqueId() {
-  return Date.now().toString();
+  return Number(Date.now().toString());
 }
 
 module.exports = {
