@@ -14,3 +14,14 @@ Develop the classic game of [Minesweeper](https://en.wikipedia.org/wiki/Mineswee
 
 ## Useful developer commands
 * Run code linter: `npm run lint-fix`
+
+## Some screenshots
+
+![image](https://user-images.githubusercontent.com/12686536/86407027-a05a4280-bc8a-11ea-8e17-59e8edae32d9.png)
+
+![image](https://user-images.githubusercontent.com/12686536/86406854-435e8c80-bc8a-11ea-9787-4403a13c4720.png)
+
+![image](https://user-images.githubusercontent.com/12686536/86406938-6be68680-bc8a-11ea-81fb-b45fef5c08ad.png)
+
+![image](https://user-images.githubusercontent.com/12686536/86406963-7739b200-bc8a-11ea-9a0e-5202b1199978.png)
+
