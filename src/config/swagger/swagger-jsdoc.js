@@ -15,8 +15,8 @@ const options = {
       },
     },
     externalDocs: {
-      description: 'Find out more about Swagger',
-      url: 'http://swagger.io',
+      description: 'Github Repository',
+      url: 'https://github.com/cristian-pelegrin/minesweeper-API',
     },
     servers: [
       {
