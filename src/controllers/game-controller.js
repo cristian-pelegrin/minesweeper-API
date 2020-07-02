@@ -1,7 +1,8 @@
 const errorMessages = require('../constants/error-messages');
 const gameService = require('../services/game-service');
 const boardService = require('../services/board-service');
-const { gameStates } = require('../models/game-model');
+const { isInValidPUTRequest, isGameAvailable } = require('../helpers/game-controller-helpers');
+const { boardActions } = require('../models/board-model');
 
 function getAll(req, res) {
   const games = gameService.get();
@@ -54,22 +55,18 @@ function deleteGame(req, res) {
   res.status(200).json({ success: true });
 }
 
-function isGameAvailable(game) {
-  return game.getState() === gameStates.STARTED || game.getState() === gameStates.CREATED;
-}
-// eslint-disable-next-line consistent-return
-function revealCell(req, res) {
-  if (!req.body.position
-    || req.body.position.row === null
-    || req.body.position.column === null
-    || !req.body.id) {
+function modify(req, res, action) {
+  if (isInValidPUTRequest(req)) {
     res.status(400).json({ message: errorMessages.WRONG_PARAMS });
 
     return;
   }
-
-  const game = gameService.revealCell(req.body.position, Number(req.body.id));
-  if (game === null) {
+  const modifyParams = {
+    position: req.body.position,
+    value: (typeof (req.body.value) === 'boolean') ? req.body.value : null,
+  };
+  const game = gameService.modify(action, modifyParams, Number(req.body.id));
+  if (!game.id) {
     res.status(404).json({ message: errorMessages.GAME_NOT_FOUND });
 
     return;
@@ -83,7 +80,18 @@ function revealCell(req, res) {
   res.status(200).json({ game });
 }
 
-// TO-DO add logic to add/remove flag, add/remove question mark, uncover cell
+function revealCell(req, res) {
+  return modify(req, res, boardActions.REVEAL_CELL);
+}
+
+function markFlag(req, res) {
+  return modify(req, res, boardActions.FLAG_CELL);
+}
+
+function markQuestion(req, res) {
+  return modify(req, res, boardActions.QUESTION_MARK_CELL);
+}
+
 // TO-DO add logic to calculate an add time used in each response (maybe a helper)
 
 module.exports = {
@@ -91,5 +99,7 @@ module.exports = {
   getGame,
   createGame,
   revealCell,
+  markFlag,
+  markQuestion,
   deleteGame,
 };

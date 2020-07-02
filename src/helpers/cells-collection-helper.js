@@ -105,8 +105,19 @@ function revealCell(params, cells, size) {
   return { result: true, cells: newCells };
 }
 
+function markCell(action, params, boardActions, cells) {
+  const { position, value } = params;
+  if (cells[position.row][position.column].getHidden()) {
+    if (action === boardActions.FLAG_CELL) cells[position.row][position.column].setFlag(value);
+    if (action === boardActions.QUESTION_MARK_CELL) cells[position.row][position.column].setQuestionSignMarked(value);
+  }
+
+  return { result: true, cells };
+}
+
 module.exports = {
   buildCells,
   revealCell,
   printBoard,
+  markCell,
 };

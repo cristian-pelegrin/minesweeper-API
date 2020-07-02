@@ -56,6 +56,16 @@ class Cell {
     return this.hidden;
   }
 
+  setFlag(value) {
+    this.flagged = (typeof (value) === 'boolean') ? value : !this.flagged;
+    this.questionSignMarked = false;
+  }
+
+  setQuestionSignMarked(value) {
+    this.questionSignMarked = (typeof (value) === 'boolean') ? value : !this.questionSignMarked;
+    this.flagged = false;
+  }
+
   reveal() {
     this.hidden = false;
     this.flagged = false;
@@ -65,11 +75,11 @@ class Cell {
   }
 
   getStringRepresentation() {
-    if (this.hidden) return ' ';
-    if (this.hasMine) return 'm';
-    if (this.warnings) return `${this.warnings}`;
     if (this.flagged) return 'f';
     if (this.questionSignMarked) return '?';
+    if (this.hidden) return ' ';
+    if (this.warnings) return `${this.warnings}`;
+    if (this.hasMine) return 'm';
 
     return '_';
   }

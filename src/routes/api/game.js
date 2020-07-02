@@ -197,7 +197,7 @@ router.delete('/', gameController.deleteGame);
  *      summary: "Reveal a game cell"
  *      tags: [Game]
  *      requestBody:
- *        description: "Body with information of game and cell position"
+ *        description: "Body with information of game and board result"
  *        content:
  *            application/json:
  *              schema:
@@ -250,6 +250,137 @@ router.delete('/', gameController.deleteGame);
  *                $ref: '#/components/schemas/Error_500'
  */
 router.put('/cell/reveal', gameController.revealCell);
-// TO-DO add PUT method to edit game state, add/remove flags, add/remove question marks
+
+/**
+ * @swagger
+ * path:
+ *  /game/cell/flag:
+ *    put:
+ *      summary: "Flag or un-flag flag of a cell"
+ *      tags: [Game]
+ *      requestBody:
+ *        description: "Body with information of game and board result"
+ *        content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  id:
+ *                    description: "Game id"
+ *                    type: "integer"
+ *                    example: 123
+ *                  value:
+ *                    description: "value of flag"
+ *                    type: boolean
+ *                    example: true
+ *                  position:
+ *                    description: "cell position"
+ *                    type: object
+ *                    properties:
+ *                      row:
+ *                        description: "row position"
+ *                        type: "integer"
+ *                        example: 4
+ *                      column:
+ *                        description: "column position"
+ *                        type: "integer"
+ *                        example: 3
+ *      responses:
+ *        "200":
+ *          description: "Game deleted"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  success:
+ *                    type: "boolean"
+ *                    example: true
+ *        "400":
+ *          description: "Bad request"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_400'
+ *        "404":
+ *          description: "Not found"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_404'
+ *        "500":
+ *          description: "Not found"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_500'
+ */
+router.put('/cell/flag', gameController.markFlag);
+
+/**
+ * @swagger
+ * path:
+ *  /game/cell/question:
+ *    put:
+ *      summary: "Reveal a game cell"
+ *      tags: [Game]
+ *      requestBody:
+ *        description: "Body with information of game and board result"
+ *        content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  id:
+ *                    description: "Game id"
+ *                    type: "integer"
+ *                    example: 123
+ *                  value:
+ *                    description: "value of question"
+ *                    type: boolean
+ *                    example: true
+ *                  position:
+ *                    description: "cell position"
+ *                    type: object
+ *                    properties:
+ *                      row:
+ *                        description: "row position"
+ *                        type: "integer"
+ *                        example: 4
+ *                      column:
+ *                        description: "column position"
+ *                        type: "integer"
+ *                        example: 3
+ *      responses:
+ *        "200":
+ *          description: "Game deleted"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  success:
+ *                    type: "boolean"
+ *                    example: true
+ *        "400":
+ *          description: "Bad request"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_400'
+ *        "404":
+ *          description: "Not found"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_404'
+ *        "500":
+ *          description: "Not found"
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error_500'
+ */
+router.put('/cell/question', gameController.markQuestion);
 
 module.exports = router;
